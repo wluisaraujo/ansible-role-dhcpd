@@ -1,2 +1,12 @@
 ---
 # vars file for iac-ansible-dhcp-server
+
+# vars para dhcpd.conf 
+server: dhcp.dexter.com.br
+domain: dexter.com.br
+nameserver1: 192.168.200.1
+nameserver2: 192.168.200.30
+nameserver3: 192.168.200.130
+logserver: log.dexter.com.br
+ntpserver: ntp.dexter.com.br
+

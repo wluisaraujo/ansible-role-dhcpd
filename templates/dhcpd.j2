@@ -1,0 +1,30 @@
+### /etc/dhcp/dhcpd.conf - gerenciado via ansible
+
+## Configuracoes Globais
+authoritative;
+ddns-update-style none;
+log-facility local7;
+
+## Default Lease Time
+default-lease-time 600;
+max-lease-time 7200;
+min-lease-time 1000;
+
+# option definitions common to all supported networks...
+
+server-identifier {{ server }};
+option domain-name "{{ domain }}";
+option domain-name-servers {{ namserver1 }}, {{ nameserver2 }}, {{ nameserver3 }};
+option log-servers {{ logserver }};
+option ntp-servers {{ ntpserver }};
+
+## Include
+
+# Arquivo de configuração VLAN01 - 192.168.200.0/25
+include "/etc/dhcp/dhcpd-vlan1.conf";
+
+# Arquivo de configuração VLAN02 - 192.168.200.128/25
+include "/etc/dhcp/dhcpd-vlan2.conf";
+
+# Arquivo de configuração com endereços fixos
+include "/etc/dhcp/fixedaddress.conf";
