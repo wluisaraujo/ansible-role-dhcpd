@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - isc-dhcp-server
+    - iac-ansible-dhcp-server
