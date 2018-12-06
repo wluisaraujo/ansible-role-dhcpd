@@ -19,7 +19,14 @@
   register: VLAN1
   when: ( FIXEDCONF is success )
   vars:
-    nic : eth1
+    subnet: 192.168.200.0
+    netmask: 255.255.255.128
+    nic: eth1
+    range_start: 192.168.200.100
+    range_end: 192.168.200.110
+    router1: 192.168.200.1
+    router2: 192.168.200.129
+    broadcast: 192.168.200.127
     
 - template:
     src: dhcpd-vlan.j2
@@ -29,6 +36,15 @@
     mode: 0644
   register: VLAN2
   when: ( VLAN1 is success )
+  vars:
+    subnet: 192.168.200.128
+    netmask: 255.255.255.255
+    nic: eth2
+    range_start: 192.168.200.200
+    range_end: 192.168.200.210
+    router1: 192.168.200.129
+    router2: 192.168.200.1
+    broadcast: 192.168.200.255
 
 - template:
     src: dhcpd.j2
@@ -37,9 +53,12 @@
     owner: root
     group: root
     mode: 0644
-#  when: vlan2conf|success
-#  notify:
-#    - Restart dhcp-server
+  when: 
+    - FIXEDCONF is success
+    - VLAN1 is success
+    - VLAN2 is success
+  notify:
+    - Restart dhcp-server
 
 
 
