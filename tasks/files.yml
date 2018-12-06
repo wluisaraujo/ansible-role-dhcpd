@@ -58,8 +58,8 @@
 #  register: vlan2conf
 #  when: vlan1conf|success
 #
-- name: 'Define o arquivo de configuracao /etc/dhcp/dhcpd.conf'
-  template:
+#- name: 'Define o arquivo de configuracao /etc/dhcp/dhcpd.conf'
+- template:
     src: dhcpd.j2
     dest: /etc/dhcp/dhcpd.conf
     force: yes
