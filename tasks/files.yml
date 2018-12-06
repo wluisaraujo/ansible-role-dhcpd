@@ -67,7 +67,7 @@
     group: root
     mode: 0644
     backup: yes
-  when: vlan2conf|success
+#  when: vlan2conf|success
 #  notify:
 #    - Restart dhcp-server
 ...
