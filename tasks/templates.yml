@@ -11,30 +11,35 @@
   register: fixedconf
 
 - name: Define o arquivo de configuracao dhcpd-vlan1.conf
-  when: fixedconf|success
-          template:
-                  src: dhcpdvlan1.j2
-                  dest: /etc/dhcp/dhcpd-vlan.conf
-                  owner: root
-                  group: root
-                  mode: 0644
-                  backup: yes
+  template:
+    src: dhcpdvlan1.j2
+    dest: /etc/dhcp/dhcpd-vlan.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
   register: vlan1conf
-
+  when: fixedconf|success
+  
 - name: Define o arquivo de configuracao dhcpd-vlan2.conf
-  when: vlan1conf|success
-  copy: src=dhcpd-vlan2.conf dest=/etc/dhcp/dhcpd-vlan2.conf owner=root group=root mode=0644
+  copy: 
+    src: dhcpd-vlan2.conf 
+    dest: /etc/dhcp/dhcpd-vlan2.conf 
+    owner: root 
+    group: root 
+    mode: 0644
   register: vlan2conf
+  when: vlan1conf|success
 
 - name: Define o arquivo de configuracao /etc/dhcp/dhcpd.conf
   when: vlan2conf|success
-          template:
-                  src: dhcpd.j2
-                  dest: /etc/dhcp/dhcpd.conf
-                  owner: root
-                  group: root
-                  mode: 0644
-                  backup: yes
+  template:
+    src: dhcpd.j2
+    dest: /etc/dhcp/dhcpd.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
   notify:
     - Restart dhcp-server
 ...
