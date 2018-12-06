@@ -17,17 +17,16 @@
     group: root
     mode: 0644
   register: VLAN1
-# when: FIXEDCONF|success
-#  
-#- name: Define o arquivo de configuracao dhcpd-vlan2.conf
-#  copy: 
-#    src: dhcpd-vlan.conf 
-#    dest: /etc/dhcp/dhcpd-vlan2.conf 
-#    owner: root 
-#    group: root 
-#    mode: 0644
-#  register: vlan2conf
-#  when: vlan1conf|success
+  when: ( FIXEDCONF is success )
+
+- template:
+    src: dhcpdvlan.j2
+    dest: /etc/dhcp/dhcpd-vlan2.conf
+    owner: root
+    group: root
+    mode: 0644
+  register: VLAN2
+  when: ( VLAN1 is success )
 
 - template:
     src: dhcpd.j2
@@ -36,7 +35,8 @@
     owner: root
     group: root
     mode: 0644
-    backup: yes
+  vars:
+    nic : eth2
 #  when: vlan2conf|success
 #  notify:
 #    - Restart dhcp-server
