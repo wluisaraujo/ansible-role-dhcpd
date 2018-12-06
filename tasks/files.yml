@@ -10,7 +10,7 @@
   when: ( dhcp_installed is success )
   register: fixedconf
 
-#- name: 'Define o arquivo de configuracao /etc/dhcp/dhcpd.conf'
+#- name: 'Define o arquivo de configuracao dhcpd.conf'
 - template:
     src: dhcpd.j2
     dest: /etc/dhcp/dhcpd.conf
