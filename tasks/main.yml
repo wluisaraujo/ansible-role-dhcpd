@@ -4,6 +4,6 @@
 - name: Instala servidor DHCP
   import_tasks: install.yml 
 
-#- name: Configura servidor DHCP
-#  import_tasks: templates.yml 
+- name: Configura servidor DHCP
+  import_tasks: files.yml 
 ...
