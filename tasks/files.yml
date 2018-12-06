@@ -1,6 +1,6 @@
 ---
 ### tasks file for iac-ansible-dhcp-server
-- name: Define o arquivo de configuracao fixedaddress.conf
+- name: Define o arquivos de configuracao
   copy: 
     src: fixedaddress.conf 
     dest: /etc/dhcp/fixedaddress.conf 
@@ -8,9 +8,27 @@
     group: root 
     mode: 0644
   when: ( dhcp_installed is success )
-  register: fixedconf
+  register: FIXEDCONF
+  
+- template:
+    src: dhcpdvlan.j2
+    dest: /etc/dhcp/dhcpd-vlan1.conf
+    owner: root
+    group: root
+    mode: 0644
+  register: VLAN1
+# when: FIXEDCONF|success
+#  
+#- name: Define o arquivo de configuracao dhcpd-vlan2.conf
+#  copy: 
+#    src: dhcpd-vlan.conf 
+#    dest: /etc/dhcp/dhcpd-vlan2.conf 
+#    owner: root 
+#    group: root 
+#    mode: 0644
+#  register: vlan2conf
+#  when: vlan1conf|success
 
-#- name: 'Define o arquivo de configuracao dhcpd.conf'
 - template:
     src: dhcpd.j2
     dest: /etc/dhcp/dhcpd.conf
@@ -22,6 +40,8 @@
 #  when: vlan2conf|success
 #  notify:
 #    - Restart dhcp-server
+
+
 
 
 #- name: Define o arquivo de configuracao dhcpd-vlan1.conf
