@@ -12,8 +12,8 @@
 
 - name: Define o arquivo de configuracao dhcpd-vlan1.conf
   template:
-    src: dhcpdvlan1.j2
-    dest: /etc/dhcp/dhcpd-vlan.conf
+    src: dhcpdvlan.j2
+    dest: /etc/dhcp/dhcpd-vlan1.conf
     owner: root
     group: root
     mode: 0644
@@ -23,7 +23,7 @@
   
 - name: Define o arquivo de configuracao dhcpd-vlan2.conf
   copy: 
-    src: dhcpd-vlan2.conf 
+    src: dhcpd-vlan.conf 
     dest: /etc/dhcp/dhcpd-vlan2.conf 
     owner: root 
     group: root 
