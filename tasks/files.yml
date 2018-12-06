@@ -1,25 +1,30 @@
 ---
 ### tasks file for iac-ansible-dhcp-server
 - name: Define o arquivo de configuracao fixedaddress.conf
-  when: dhcp_installed|success
-  copy: src=fixedaddress.conf dest=/etc/dhcp/fixedaddress.conf owner=root group=root mode=0644
+  copy: 
+    src: fixedaddress.conf 
+    dest: /etc/dhcp/fixedaddress.conf 
+    owner: root 
+    group: root 
+    mode: 0644
+  when: ( dhcp_installed is success )
   register: fixedconf
 
-- name: Define o arquivo de configuracao dhcpd-vlan1.conf
-  when: fixedconf|success
-  copy: src=dhcpd-vlan1.conf dest=/etc/dhcp/dhcpd-vlan1.conf owner=root group=root mode=0644
-  register: vlan1conf
+#- name: Define o arquivo de configuracao dhcpd-vlan1.conf
+#  when: fixedconf|success
+#  copy: src=dhcpd-vlan1.conf dest=/etc/dhcp/dhcpd-vlan1.conf owner=root group=root mode=0644
+#  register: vlan1conf
 
-- name: Define o arquivo de configuracao dhcpd-vlan2.conf
-  when: vlan1conf|success
-  copy: src=dhcpd-vlan2.conf dest=/etc/dhcp/dhcpd-vlan2.conf owner=root group=root mode=0644
-  register: vlan2conf
+#- name: Define o arquivo de configuracao dhcpd-vlan2.conf
+#  when: vlan1conf|success
+#  copy: src=dhcpd-vlan2.conf dest=/etc/dhcp/dhcpd-vlan2.conf owner=root group=root mode=0644
+#  register: vlan2conf
 
-- name: Define o arquivo de configuracao /etc/dhcp/dhcpd.conf
-  when: vlan2conf|success
-  copy: src=dhcpd.conf dest=/etc/dhcp/dhcpd.conf owner=root group=root mode=0644
-  notify:
-    - Restart dhcp-server
+#- name: Define o arquivo de configuracao /etc/dhcp/dhcpd.conf
+#  when: vlan2conf|success
+#  copy: src=dhcpd.conf dest=/etc/dhcp/dhcpd.conf owner=root group=root mode=0644
+#  notify:
+#    - Restart dhcp-server
 
 ### tasks file for iac-ansible-dhcp-server
 #- name: Define o arquivo de configuracao fixedaddress.conf
