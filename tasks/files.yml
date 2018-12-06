@@ -18,7 +18,9 @@
     mode: 0644
   register: VLAN1
   when: ( FIXEDCONF is success )
-
+  vars:
+    nic : eth1
+    
 - template:
     src: dhcpdvlan.j2
     dest: /etc/dhcp/dhcpd-vlan2.conf
@@ -35,8 +37,6 @@
     owner: root
     group: root
     mode: 0644
-  vars:
-    nic : eth2
 #  when: vlan2conf|success
 #  notify:
 #    - Restart dhcp-server
