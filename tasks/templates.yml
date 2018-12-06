@@ -1,8 +1,13 @@
 ---
 ### tasks file for iac-ansible-dhcp-server
 - name: Define o arquivo de configuracao fixedaddress.conf
+  copy: 
+    src: fixedaddress.conf 
+    dest: /etc/dhcp/fixedaddress.conf 
+    owner: root 
+    group: root 
+    mode: 0644
   when: dhcp_installed|success
-  copy: src=fixedaddress.conf dest=/etc/dhcp/fixedaddress.conf owner=root group=root mode=0644
   register: fixedconf
 
 - name: Define o arquivo de configuracao dhcpd-vlan1.conf
