@@ -15,6 +15,7 @@ min-lease-time 1000;
 
 server-identifier {{ server }};
 option domain-name "{{ domain }}";
+option domain-search "{{ domain }}";
 option domain-name-servers {{ nameserver1 }}, {{ nameserver2 }}, {{ nameserver3 }};
 option log-servers {{ logserver }};
 option ntp-servers {{ ntpserver }};
