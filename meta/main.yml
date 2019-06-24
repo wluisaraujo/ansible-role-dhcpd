@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: iac-ansible-dhcp-server
   author: w.luis.araujo
   description: "Install and configure DHCP Server"
   company: LUSAR | wluisaraujo.github.io
