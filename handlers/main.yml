@@ -1,5 +1,5 @@
 ---
-# handlers file for iac-ansible-dhcp-server
+# handlers file for dhcpd
 ## SystemD
 - name: Start {{ service_name }}
   systemd:

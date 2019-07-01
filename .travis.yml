@@ -13,7 +13,7 @@ services:
 
 env:
   global:
-    - ROLE_NAME: iac-ansible-dhcp-server
+    - ROLE_NAME: dhcpd
     - ANSIBLE_ACTION_WARNINGS: "False"
     - ANSIBLE_COMMAND_WARNINGS: "False"
     - ANSIBLE_DEPRECATION_WARNINGS: "False"
@@ -47,7 +47,7 @@ install:
 
 
  # Install ansible role
- - ansible-galaxy install wluisaraujo.iac-ansible-dhcp-server
+ - ansible-galaxy install wluisaraujo.dhcpd
 
 script:
  # Basic role syntax check

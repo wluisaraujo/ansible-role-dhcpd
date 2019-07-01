@@ -1,5 +1,5 @@
 ---
-# vars file for iac-ansible-dhcp-server
+# vars file for dhcpd
 
 # vars para dhcpd.conf 
 server: dhcp.dexter.com.br
