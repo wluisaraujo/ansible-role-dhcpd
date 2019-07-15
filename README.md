@@ -1,4 +1,4 @@
-[![Ansible Galaxy](https://img.shields.io/badge/Ansible%20Galaxy-Servidor%20DHCP-blue.svg)](https://galaxy.ansible.com/wluisaraujo/iac-ansible-dhcp-server)  [![Build Status](https://travis-ci.org/wluisaraujo/iac-ansible-dhcp-server.svg?branch=master)](https://travis-ci.org/wluisaraujo/iac-ansible-dhcp-server)
+[![Ansible Galaxy](https://img.shields.io/badge/Ansible%20Galaxy-Servidor%20DHCP-blue.svg)](https://galaxy.ansible.com/wluisaraujo/iac-ansible-dhcp-server) [![Build Status](https://travis-ci.org/wluisaraujo/ansible-role-dhcpd.svg?branch=master)](https://travis-ci.org/wluisaraujo/ansible-role-dhcpd)
 
 ---
 # IaC: with [Ansible](https://www.ansible.com) role to install and configure [ISC DHCP Server](https://www.isc.org/downloads/dhcp/)
