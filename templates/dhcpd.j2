@@ -19,6 +19,10 @@ option domain-search "{{ domain }}";
 option domain-name-servers {{ nameserver1 }}, {{ nameserver2 }}, {{ nameserver3 }};
 option log-servers {{ logserver }};
 option ntp-servers {{ ntpserver }};
+option netbios-name-servers {{ nameserver1 }};
+option netbios-node-type 8;
+get-lease-hostnames true;
+use-host-decl-names true;
 
 ## Include
 

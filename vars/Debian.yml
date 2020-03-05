@@ -1,0 +1,24 @@
+---
+# vars file for dhcpd
+
+# vars para dhcpd.conf
+server: dhcp.dexter.com.br
+domain: dexter.com.br
+nameserver1: 192.168.200.1
+nameserver2: 192.168.200.30
+nameserver3: 192.168.200.130
+logserver: log.dexter.com.br
+ntpserver: ntp.dexter.com.br
+
+# var para vlan1
+subnet: 192.168.200.0
+netmask: 255.255.255.128
+nic: eth1
+range_start: 192.168.200.100
+range_end: 192.168.200.110
+router1: 192.168.200.1
+router2: 192.168.200.129
+broadcast: 192.168.200.127
+
+packages:
+  - isc-dhcp-server
