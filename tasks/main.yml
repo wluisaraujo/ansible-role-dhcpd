@@ -1,9 +1,19 @@
 ---
 ### tasks file for dhcpd
 
-- name: Instala servidor DHCP
-  import_tasks: install.yml 
+# Import Variable
+- name: "Include variaveis por OS"
+  include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Configura servidor DHCP
-  import_tasks: files.yml 
+- name: "Instalar servidor de DHCP para o {{ ansible_distribution }} versão {{ ansible_distribution_major_version }}"
+  package:
+    name: "{{ packages }}"
+    state: latest
+    update_cache: true
+  register: dhcp_installed
+  notify:
+    - Start dhcp-server
+
+- name: "Configura servidor DHCP"
+  import_tasks: files.yml
 ...
