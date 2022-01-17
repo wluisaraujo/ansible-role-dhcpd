@@ -35,3 +35,5 @@
 id_rsa
 .vagrant
 .vagrant/*
+.swp
+*.swp

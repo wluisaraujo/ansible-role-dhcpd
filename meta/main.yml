@@ -1,10 +1,14 @@
 galaxy_info:
-  role_name: dhcpd
-  author: w.luis.araujo
+  role_name: "dhcpd"
+  namespace: "w.luis.araujo"
   description: "Infrastructure as Code (IaC) with Ansible role for Install and configure DHCP Server"
-  company: LUSAR | wluisaraujo.github.io
+
+  author: "w.luis.araujo"
+  company: "4LUSAR | wluisaraujo.github.io"
   license: "license (GPLv3)"
+
   min_ansible_version: 2.6
+
   platforms:
   - name: EL
     versions:
@@ -18,9 +22,11 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - all
+
   galaxy_tags:
     - isc-dhcp-server
     - dhcp
     - dhcpd
     - dhcp-server
+
 dependencies: []
