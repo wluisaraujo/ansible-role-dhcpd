@@ -21,6 +21,12 @@ option log-servers {{ logserver }};
 option ntp-servers {{ ntpserver }};
 option netbios-name-servers {{ nameserver1 }};
 option netbios-node-type 8;
+#option impress-servers {{ cups-server }};
+#option lpr-servers {{ cups-server }};
+#option smtp-servers {{ smpt-server }};
+#option static-routes {{ server }} ;
+#option kerberos-servers code 200 = array of ip-address;
+#option kerberos-servers 10.20.10.1, 10.20.11.1;
 get-lease-hostnames true;
 use-host-decl-names true;
 
